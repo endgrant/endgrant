@@ -1,0 +1,24 @@
+.terminal {
+    background: transparent;
+    color: white;
+    font-family: monospace;
+    margin: 0;
+    margin-left: 2px;
+}
+.terminal *::selection {
+    background: white;
+    color: black;
+}
+
+.cursor {
+    display: inline-block;
+    width: 1ch;
+    height: 1em;
+    background-color: white;
+    vertical-align: text-bottom;
+    animation: blink 1s steps(1) infinite;
+} @keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="styling.css">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grant System</title>
@@ -13,22 +15,6 @@
             --padding-left: 9;
             --padding-right: 9;
             --padding-bottom: 23;
-        }
-        pre {
-            /* Terminal content constants */
-            font-family: 'Courier New', monospace; /* Monospace font */
-            color: #ffffff; /* White text */
-            overflow-x: auto; /* Allow horizontal scrolling if content overflows */
-        }
-        pre::after {
-            /* Cursor blink animation */
-            content: '|';
-            animation: blink 1s step-end infinite;
-        }
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
         }
 
         body {
@@ -61,41 +47,13 @@
             font-size: clamp(14px, 2vw, 24px);  /* Font size will scale between 14px and 24px, based on content width */
             color: white;
         }
-
-        /* Hide the textarea but keep it functional */
-        #userInput {
-            position: absolute;
-            width: 1px; /* Small width so it's invisible */
-            height: 1px; /* Small height so it's invisible */
-            opacity: 0; /* Make it invisible */
-            pointer-events: none; /* Prevent interaction with the textarea */
-        }
     </style>
 </head>
 <body>
     <div class="border-wrapper">
         <div class="content">
-            <textarea id="userInput" autofocus></textarea>
-            <pre id="output"></pre>
-
-            <script>
-                const userInput = document.getElementById('userInput');
-                const output = document.getElementById('output');
-
-                // Event listener to capture user input and update output
-                userInput.addEventListener('input', function() {
-                    // Update the output element with the user's input
-                    output.textContent = userInput.value;
-                });
-
-                // Ensure the textarea is focused on page load
-                userInput.focus();
-
-                // Re-focus the textarea if it loses focus
-                userInput.addEventListener('blur', function() {
-                    userInput.focus();
-                });
-            </script>
+            <pre class="terminal">
+$<span class="cursor"></span></pre>
         </div>
     </div>
 </body>
