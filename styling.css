@@ -1,21 +1,44 @@
-.terminal {
+pre.terminal, textarea.user-input {
     background: transparent;
     color: white;
+    border: none;
+    outline: none;
+
+    font-size: 1em;
     font-family: monospace;
+    line-height: 1;
+    vertical-align: baseline;
+
     margin: 0;
-    margin-left: 2px;
-}
-.terminal *::selection {
+    padding: 0;
+    box-sizing: content-box;
+} *::selection {
     background: white;
     color: black;
 }
+pre.terminal {
+    margin-left: 2px;
+}
+textarea.user-input {
+    resize: none;
+    field-sizing: content;
+    height: calc(1em);
 
-.cursor {
+    vertical-align: top;
+    text-wrap: nowrap;
+    overflow-y: hidden;
+
+    caret-color: transparent;
+    pointer-events: none;
+}
+
+
+span.cursor {
     display: inline-block;
     width: 1ch;
     height: 1em;
     background-color: white;
-    vertical-align: text-bottom;
+    vertical-align: top;
     animation: blink 1s steps(1) infinite;
 } @keyframes blink {
     50% {

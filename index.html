@@ -52,9 +52,20 @@
 <body>
     <div class="border-wrapper">
         <div class="content">
-            <pre class="terminal">
-$<span class="cursor"></span></pre>
+<pre class="terminal">
+Grant System™
+$<textarea class="user-input" id="user-input" autofocus maxlength="256"></textarea><span class="cursor"></span>
+</pre>
         </div>
     </div>
+
+    <script>
+        const userinput = document.getElementById('user-input');
+
+        // Refocus on focus lost
+        userinput.addEventListener('blur', function() {
+            userinput.focus();
+        });
+    </script>
 </body>
 </html>
