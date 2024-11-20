@@ -60,11 +60,18 @@ $<textarea class="user-input" id="user-input" autofocus maxlength="256"></textar
     </div>
 
     <script>
-        const userinput = document.getElementById('user-input');
+        const userInput = document.getElementById('user-input');
 
         // Refocus on focus lost
-        userinput.addEventListener('blur', function() {
-            userinput.focus();
+        userInput.addEventListener('blur', function() {
+            userInput.focus();
+        });
+
+        // Handle enter-key press
+        userInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+            }
         });
     </script>
 </body>
