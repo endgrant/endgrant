@@ -52,27 +52,44 @@
 <body>
     <div class="border-wrapper">
         <div class="content">
-<pre class="terminal">
+<pre class="terminal" id="terminal">
 Grant System™
-$<textarea class="user-input" id="user-input" autofocus maxlength="256"></textarea><span class="cursor"></span>
+<span id="output">></span><textarea class="user-input" id="user-input" autofocus maxlength="256"></textarea><span class="cursor"></span>
 </pre>
         </div>
     </div>
 
     <script>
+        const output = document.getElementById('output')
         const userInput = document.getElementById('user-input');
+
 
         // Refocus on focus lost
         userInput.addEventListener('blur', function() {
             userInput.focus();
         });
 
+
+
         // Handle enter-key press
         userInput.addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {
+                // Override line break behavior
                 event.preventDefault();
+
+                // Append user text to terminal
+                var inputText = userInput.value;
+                userInput.value = '';
+                output.innerHTML += inputText;
+                requestUserInput();
             }
         });
+
+
+        // Creates a new line on which to wait for user input
+        function requestUserInput() {
+            output.innerHTML += "\n>";
+        }
     </script>
 </body>
 </html>
