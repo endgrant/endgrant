@@ -4,7 +4,7 @@ pre.terminal, textarea.user-input {
     border: none;
     outline: none;
 
-    font-size: 1em;
+    font-size: 0.75em;
     font-family: Consolas, monospace;
     line-height: 1;
     vertical-align: baseline;
@@ -23,17 +23,19 @@ textarea.user-input {
     resize: none;
     field-sizing: content;
     height: calc(1.1em);
+    font-size: 1em;
 
     vertical-align: top;
     text-wrap: nowrap;
     overflow-y: hidden;
 
-    caret-color: transparent;
+    caret-color: white;
+    caret-shape: block;
     pointer-events: none;
 }
 
 
-span.cursor {
+span.caret {
     display: inline-block;
     width: 1ch;
     height: 1em;

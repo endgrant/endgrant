@@ -54,7 +54,7 @@
         <div class="content">
 <pre class="terminal" id="terminal">
 Grant System™
-<span id="output">></span><textarea class="user-input" id="user-input" autofocus maxlength="256"></textarea><span class="cursor"></span>
+<span id="output">></span><textarea class="user-input" id="user-input" autofocus maxlength="256"></textarea><span class="caret" id="caret"></span>
 </pre>
         </div>
     </div>
@@ -62,6 +62,9 @@ Grant System™
     <script>
         const output = document.getElementById('output')
         const userInput = document.getElementById('user-input');
+        const caret = document.getElementById('caret');
+        userInput.addEventListener('click', updateCaret);
+        userInput.addEventListener('input', updateCaret);
 
 
         // Refocus on focus lost
@@ -70,9 +73,9 @@ Grant System™
         });
 
 
-
         // Handle enter-key press
         userInput.addEventListener('keydown', function(event) {
+            updateCaret();
             if (event.key === 'Enter') {
                 // Override line break behavior
                 event.preventDefault();
@@ -80,7 +83,7 @@ Grant System™
                 // Append user text to terminal
                 var inputText = userInput.value;
                 userInput.value = '';
-                output.innerHTML += inputText;
+                output.textContent += inputText;
                 requestUserInput();
             }
         });
@@ -88,8 +91,31 @@ Grant System™
 
         // Creates a new line on which to wait for user input
         function requestUserInput() {
-            output.innerHTML += "\n>";
+            output.textContent += "\n>";
         }
+
+
+        // Updates the visibility of the custom caret based on the position of the real caret
+        function updateCaret() {
+            // Defer method call until next frame
+            setTimeout(() => {
+                const { selectionStart } = userInput;
+                const { value } = userInput;
+
+                // Pass if caret is at end of text content
+                if (selectionStart == value.length) {
+                    caret.style.display = "inline-block";
+                    userInput.style.caretColor = "transparent";
+                } else {
+                    caret.style.display = "none";
+                    userInput.style.caretColor = "white";
+                }
+            }, 0);
+        }
+
+
+        // Initialize caret
+        updateCaret();
     </script>
 </body>
 </html>
