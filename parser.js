@@ -25,13 +25,22 @@ class CommandError extends Error {
 // Displays information about commands
 class help extends Command {
     execute(args) {
-        const message = `
-    <b>help</b> Displays information about commands.
-    <b>echo</b> Echoes given text back to the terminal.`
+        if (args == "") {
+            let message = "";
 
-        return message;
+            for (const key in info) {
+                message += "\n  <b>" + key + "</b> " + info[key];
+            }
+
+            return message;
+        } else {
+            const information = info[args];
+            if (information == null) { throw new CommandError("Unknown command: " + args); }
+            return "  <b>" + args + "</b> " + information;
+        }
     }
 }
+
 
 // Outputs the input
 class echo extends Command {
@@ -41,14 +50,40 @@ class echo extends Command {
 }
 
 
+// Displays the current version
+class version extends Command {
+    execute(args) {
+        return "<b>V2</b>   November 25, 2024";
+    }
+}
+
+
+// Shuts down the terminal
+class exit extends Command {
+    execute(args) {
+        window.shutDownSystem();
+    }
+}
+
+
 
 
 // Parser
 
-// String registry of all the commands
+// String registry of command information
+const info = {
+    "help"          : "[command]  <i>Displays information about commands.</i>",
+    "echo"          : "[message]  <i>Echoes given text back to the terminal.</i>",
+    "version"       : "  <i>Displays information about the current version of Grant System™.</i>",
+    "exit"          : "  <i>Shuts down the system.</i>"
+}
+
+// Type registry of all the commands
 const registry = {
     "help": help,
-    "echo": echo
+    "echo": echo,
+    "version": version,
+    "exit": exit
 };
 
 
