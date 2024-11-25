@@ -17,6 +17,7 @@ Grant System™
         </div>
     </div>
 
+    <script src="parser.js"></script>
     <script>
         const output = document.getElementById('output')
         const userInput = document.getElementById('user-input');
@@ -41,14 +42,23 @@ Grant System™
                 // Append user text to terminal
                 var inputText = userInput.value;
                 userInput.value = '';
-                output.textContent += inputText;
-                requestUserInput();
+
+                displayMessage(inputText);
+                newLine();
+                displayMessage(parseAndExecute(inputText));
+                newLine();
             }
         });
 
 
+        // Displays output to the terminal
+        function displayMessage(message) {
+            output.textContent += message;
+        }
+
+
         // Creates a new line on which to wait for user input
-        function requestUserInput() {
+        function newLine() {
             output.textContent += "\n>";
         }
 
