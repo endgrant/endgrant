@@ -12,7 +12,7 @@
         <div class="content">
 <pre class="terminal" id="terminal">
 Grant System™
-<span id="output">></span><textarea class="user-input" id="user-input" autofocus maxlength="256"></textarea><span class="caret" id="caret"></span>
+<span id="output">&gt</span><textarea class="user-input" id="user-input" autofocus maxlength="256"></textarea><span class="caret" id="caret"></span>
 </pre>
         </div>
     </div>
@@ -43,7 +43,7 @@ Grant System™
                 var inputText = userInput.value;
                 userInput.value = '';
 
-                displayMessage(inputText);
+                displayMessage(escapeHTML(inputText));
                 newLine();
                 displayMessage(parseAndExecute(inputText));
                 newLine();
@@ -51,15 +51,15 @@ Grant System™
         });
 
 
-        // Displays output to the terminal
+        // Displays raw output to the terminal
         function displayMessage(message) {
-            output.textContent += message;
+            output.innerHTML += message;
         }
 
 
         // Creates a new line on which to wait for user input
         function newLine() {
-            output.textContent += "\n>";
+            output.innerHTML += "\n&gt";
         }
 
 

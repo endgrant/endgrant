@@ -22,10 +22,21 @@ class CommandError extends Error {
 
 // Implemented commands
 
+// Displays information about commands
+class help extends Command {
+    execute(args) {
+        const message = `
+    <b>help</b> Displays information about commands.
+    <b>echo</b> Echoes given text back to the terminal.`
+
+        return message;
+    }
+}
+
 // Outputs the input
 class echo extends Command {
     execute(args) {
-        return args;
+        return escapeHTML(args);
     }
 }
 
@@ -36,8 +47,22 @@ class echo extends Command {
 
 // String registry of all the commands
 const registry = {
+    "help": help,
     "echo": echo
 };
+
+
+// Parses the given text to be HTML-safe
+function escapeHTML(text) {
+    const map = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+    };
+    return text.replace(/[&<>"']/g, (char) => map[char]);
+}
 
 
 // Parse and execute based on calling name
