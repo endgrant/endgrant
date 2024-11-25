@@ -6,48 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grant System</title>
-    <style>
-        :root {
-            /* Sprite border constants */
-            --border-width: 240;
-            --border-height: 135;
-            --padding-top: 9;
-            --padding-left: 9;
-            --padding-right: 9;
-            --padding-bottom: 23;
-        }
-
-        body {
-            margin: 0;
-            display: flex;              /* Center content vertically and horizontally */
-            justify-content: center;
-            align-items: center;
-            background: #c7b08b;      /* Fallback background color */
-            height: 100vh;              /* Ensure the body takes full viewport height */
-        }
-
-        .border-wrapper {
-            position: relative;
-            width: 100vw;                                                           /* Set width to viewport width */
-            height: calc(100vw * (var(--border-height) / var(--border-width)));     /* Constrain height to aspect ratio */
-            max-height: 100vh;                                                      /* Set height to viewport height */
-            max-width: calc(100vh * (var(--border-width) / var(--border-height)));  /* Constrain width to aspect ratio */
-            background: url('assets/border.png') no-repeat center;
-            background-size: contain;                                               /* Ensure full border is visible */
-            image-rendering: pixelated;                                             /* Nearest neighbor sampling */
-        }
-
-        .content {
-            position: absolute;                                                 /* Position content inside the border */
-            top: calc((var(--padding-top) / var(--border-height)) * 100%);      /* Top padding as percentage of border height */
-            left: calc((var(--padding-left) / var(--border-width)) * 100%);     /* Left padding as percentage of border width */
-            right: calc((var(--padding-right) / var(--border-width)) * 100%);   /* Right padding as percentage of border width */
-            bottom: calc((var(--padding-bottom) / var(--border-height)) * 100%);/* Bottom padding as percentage of border height */
-
-            font-size: clamp(14px, 2vw, 24px);  /* Font size will scale between 14px and 24px, based on content width */
-            color: white;
-        }
-    </style>
 </head>
 <body>
     <div class="border-wrapper">
