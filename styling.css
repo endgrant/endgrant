@@ -17,16 +17,38 @@ body {
     background: #c7b08b;      /* Fallback background color */
     height: 100vh;              /* Ensure the body takes full viewport height */
 }
+
 div.border-wrapper {
     position: relative;
     width: 100vw;                                                           /* Set width to viewport width */
     height: calc(100vw * (var(--border-height) / var(--border-width)));     /* Constrain height to aspect ratio */
     max-height: 100vh;                                                      /* Set height to viewport height */
     max-width: calc(100vh * (var(--border-width) / var(--border-height)));  /* Constrain width to aspect ratio */
-    background: url('assets/border.png') no-repeat center;
+    background-image: url('assets/border.png');
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: contain;                                               /* Ensure full border is visible */
     image-rendering: pixelated;                                             /* Nearest neighbor sampling */
 }
+
+div.overlay {
+    position: absolute;             /* Position relative to border-wrapper */
+    top: 0;
+    left: 0;
+    width: 100%;                    /* Fill the same space as border-wrapper */
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    image-rendering: pixelated;
+}
+div.overlay.status-light {
+    background-image: url('assets/status-light.png');
+}
+div.overlay.on-off-button {
+    background-image: url('assets/on-off-button.png');
+}
+
 div.content {
     position: absolute;                                                 /* Position content inside the border */
     top: calc((var(--padding-top) / var(--border-height)) * 100%);      /* Top padding as percentage of border height */
