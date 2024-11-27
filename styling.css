@@ -24,14 +24,14 @@ div.border-wrapper {
     height: calc(100vw * (var(--border-height) / var(--border-width)));     /* Constrain height to aspect ratio */
     max-height: 100vh;                                                      /* Set height to viewport height */
     max-width: calc(100vh * (var(--border-width) / var(--border-height)));  /* Constrain width to aspect ratio */
-    background-image: url('assets/border.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;                                               /* Ensure full border is visible */
     image-rendering: pixelated;                                             /* Nearest neighbor sampling */
+    background-image: url('assets/border.png');
 }
 
-div.overlay {
+div.status-light {
     position: absolute;             /* Position relative to border-wrapper */
     top: 0;
     left: 0;
@@ -41,12 +41,25 @@ div.overlay {
     background-position: center;
     background-size: contain;
     image-rendering: pixelated;
-}
-div.overlay.status-light {
     background-image: url('assets/status-light.png');
 }
-div.overlay.on-off-button {
+
+button.on-off {
+    position: absolute;
+    top: 85.8%;
+    left: 87.4%;
+    width: 7%;
+    aspect-ratio: 1 / 1;
+
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    image-rendering: pixelated;
     background-image: url('assets/on-off-button.png');
+} button.on-off:active {
+    background-image: url('assets/on-off-button-pressed.png');
 }
 
 div.content {
