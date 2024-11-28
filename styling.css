@@ -43,6 +43,9 @@ div.status-light {
     image-rendering: pixelated;
     background-image: url('assets/status-light.png');
 }
+div.status-light.on {
+    background-image: url('assets/status-light-on.png');
+}
 
 button.on-off {
     position: absolute;
@@ -58,7 +61,7 @@ button.on-off {
     background-size: cover;
     image-rendering: pixelated;
     background-image: url('assets/on-off-button.png');
-} button.on-off:active {
+} button.on-off.pressed {
     background-image: url('assets/on-off-button-pressed.png');
 }
 

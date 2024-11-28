@@ -9,11 +9,11 @@
 </head>
 <body>
     <div class="border-wrapper">
-        <div class="status-light"></div>
-        <button class="on-off"></button>
+        <div class="status-light" id="light"></div>
+        <button class="on-off" id="power-button"></button>
         <div class="content">
 <pre class="terminal" id="terminal">
-<span id="output"></span><textarea class="user-input" id="user-input" autofocus contenteditable="false" maxlength="256"></textarea><span class="caret" id="caret"></span>
+<span id="output"></span><textarea class="user-input" id="user-input" contenteditable="false" maxlength="256"></textarea><span class="caret" id="caret"></span>
 </pre>
         </div>
     </div>
@@ -25,6 +25,8 @@
         const output = document.getElementById('output')
         const userInput = document.getElementById('user-input');
         const caret = document.getElementById('caret');
+        const statusLight = document.getElementById('light');
+        const powerButton = document.getElementById('power-button');
         userInput.addEventListener('click', updateCaret);
         userInput.addEventListener('input', updateCaret);
 
@@ -53,6 +55,22 @@
                 displayMessage(parseAndExecute(inputText));
                 newLine();
             }
+        });
+
+
+        // Power button pressed
+        powerButton.addEventListener('mousedown', () => {
+            powerButton.classList.add('pressed');
+
+            if (systemOn) {
+                shutDownSystem();
+            } else {
+                startUpSystem();
+            }
+        });
+        // Released
+        powerButton.addEventListener('mouseup', () => {
+            powerButton.classList.remove('pressed');
         });
 
 
@@ -92,6 +110,7 @@
 
         window.shutDownSystem = function() {
             systemOn = false;
+            statusLight.classList.remove('on');
 
             output.innerHTML = "";
             userInput.contenteditable = "false";
@@ -102,17 +121,19 @@
 
         function startUpSystem() {
             systemOn = true;
+            statusLight.classList.add('on');
 
             displayMessage("Grant System™\n");
             displayMessage(parseAndExecute("version"));
             newLine();
             userInput.contenteditable = "true";
+            userInput.focus();
             updateCaret();
         }
 
 
         // Initialize
-        startUpSystem();
+        shutDownSystem();
     </script>
 </body>
 </html>

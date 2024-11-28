@@ -53,7 +53,7 @@ class echo extends Command {
 // Displays the current version
 class version extends Command {
     execute(args) {
-        return "<b>V2</b>   November 25, 2024";
+        return "<b>V4</b>   November 27, 2024";
     }
 }
 
