@@ -1,0 +1,11 @@
+Change terminal font size scaling to be proportional to the border sprite width, NOT the window width.
+
+Add nice visual effects like scan-lines to the terminal screen.
+
+Darken terminal screen when the system is off.
+
+Add more commands.
+
+Change button sprite.
+
+Add startup splashscreen/animation.
