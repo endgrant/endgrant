@@ -72,7 +72,7 @@ div.content {
     right: calc((var(--padding-right) / var(--border-width)) * 100%);   /* Right padding as percentage of border width */
     bottom: calc((var(--padding-bottom) / var(--border-height)) * 100%);/* Bottom padding as percentage of border height */
 
-    font-size: clamp(14px, 2vw, 24px);  /* Font size will scale between 14px and 24px, based on content width */
+    font-size: calc(1vw + 1vh); /* Dynamic font size based on viewport */
     color: white;
 
     overflow: auto;
@@ -88,7 +88,7 @@ pre.terminal, textarea.user-input {
     border: none;
     outline: none;
 
-    font-size: 0.75em;
+    font-size: 1.25em;
     font-family: Consolas, monospace;
     line-height: 1;
     vertical-align: baseline;
@@ -120,7 +120,7 @@ textarea.user-input {
 
 
 span.caret {
-    display: inline-block;
+    display: none;
     width: 1ch;
     height: 1em;
     background-color: white;
