@@ -124,7 +124,8 @@
             statusLight.classList.add('on');
 
             displayMessage("Grant System™\n");
-            displayMessage(parseAndExecute("version"));
+            displayMessage(parseAndExecute("version") + "\n");
+            displayMessage("Type 'help' to see a list of commands.");
             newLine();
             userInput.contenteditable = "true";
             userInput.focus();
