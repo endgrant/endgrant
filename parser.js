@@ -114,7 +114,7 @@ const cmd_info = {
 // String registry of project information
 const prj_info = {
     "Weaver": "         Oct 08, 2024   <i>Arachnid survival minigame</i>",
-    "Slapslick": "      Sep 02, 2024   <i>Comedic bullet-hell</i>",
+    "Slapstick": "      Sep 02, 2024   <i>Comedic bullet-hell</i>",
     "Made for Scales": "Aug 20, 2024   <i>Food-themed puzzler</i>",
     "Deep Space": "     Jun 18, 2024   <i>Top-down space shooter</i>"
 }
